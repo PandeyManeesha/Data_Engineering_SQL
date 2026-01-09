@@ -28,6 +28,18 @@ CREATE TABLE [bronze].[cm_sales_details](
 	[sls_price] [int] NULL
 )
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[bronze].[cm_prod_info]') AND type in (N'U'))
+DROP TABLE [bronze].[cm_prod_info]
+create table bronze.cm_prod_info (
+prd_id INT,
+prd_key nvarchar(100),
+prd_nm nvarchar(100),
+prd_cost int,
+prd_line nvarchar(10),
+prd_start_dt date,
+prd_end_dt date
+);
+
 Truncate Table DataWarehouse.[bronze].[cm_cust_info]
 BULK Insert DataWarehouse.[bronze].[cm_cust_info]
 From 'C:\Users\Maneesha Pandey\Downloads\sql-data-warehouse-project-main\sql-data-warehouse-project-main\datasets\source_crm\cust_info.csv'
