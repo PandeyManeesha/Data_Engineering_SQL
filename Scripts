@@ -1,3 +1,14 @@
 Create Schema bronze; 
 Create Schema silver ;
 Create Schema gold ;
+
+create table bronze.cm_cust_info (
+cst_id INT,
+cst_key nvarchar(100),
+cst_firstname nvarchar(100),
+cst_lastname nvarchar(100),
+cst_marital_status nvarchar(10),
+cst_gndr nvarchar(10),
+cst_create_date date
+
+);
