@@ -1,1 +1,3 @@
-
+Create Schema bronze; 
+Create Schema silver ;
+Create Schema gold ;
