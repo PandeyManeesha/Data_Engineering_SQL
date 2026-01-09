@@ -2,6 +2,8 @@ Create Schema bronze;
 Create Schema silver ;
 Create Schema gold ;
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[bronze].[cm_cust_info]') AND type in (N'U'))
+DROP TABLE [bronze].[cm_cust_info]
 create table bronze.cm_cust_info (
 cst_id INT,
 cst_key nvarchar(100),
@@ -10,8 +12,21 @@ cst_lastname nvarchar(100),
 cst_marital_status nvarchar(10),
 cst_gndr nvarchar(10),
 cst_create_date date
-
 );
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[bronze].[cm_sales_details]') AND type in (N'U'))
+DROP TABLE [bronze].[cm_sales_details]
+CREATE TABLE [bronze].[cm_sales_details](
+	[sls_ord_num] [nvarchar](100) NULL,
+	[sls_prd_key] [nvarchar](100) NULL,
+	[sls_cust_id] [nvarchar](100) NULL,
+	[sls_order_dt] [nvarchar](100) NULL,
+	[sls_ship_dt] [nvarchar](10) NULL,
+	[sls_due_dt] [nvarchar](10) NULL,
+	[sls_sales] [int] NULL,
+	[sls_quantity] [int] NULL,
+	[sls_price] [int] NULL
+)
 
 Truncate Table DataWarehouse.[bronze].[cm_cust_info]
 BULK Insert DataWarehouse.[bronze].[cm_cust_info]
