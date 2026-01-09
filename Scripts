@@ -13,10 +13,11 @@ cst_create_date date
 
 );
 
+Truncate Table DataWarehouse.[bronze].[cm_cust_info]
 BULK Insert DataWarehouse.[bronze].[cm_cust_info]
 From 'C:\Users\Maneesha Pandey\Downloads\sql-data-warehouse-project-main\sql-data-warehouse-project-main\datasets\source_crm\cust_info.csv'
 WITH (
         FIRSTROW=2,
 		fieldterminator= ',',
 		TABLOCK
-); 
+);   
